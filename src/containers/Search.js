@@ -8,7 +8,7 @@ class Search extends Component {
   render() {
     return (
       <input
-        class="input"
+        className="input"
         type="text"
         placeholder="Type anything to search..."
         ref={node => (this.keywordRef = node)}
