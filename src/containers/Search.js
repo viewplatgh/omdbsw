@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchOMDB } from './actions';
+import { searchOMDB } from '../actions';
 
 class Search extends Component {
   keywordRef;
