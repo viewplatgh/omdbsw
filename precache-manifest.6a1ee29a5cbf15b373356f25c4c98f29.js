@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/omdbsw/static/js/runtime~main.9ad8586b.js"
   },
   {
-    "revision": "23d87408e98d62b92206",
-    "url": "/omdbsw/static/js/main.26fedc3d.chunk.js"
+    "revision": "1308f6f9d6ca869db537",
+    "url": "/omdbsw/static/js/main.edb75894.chunk.js"
   },
   {
     "revision": "2ea1bf4e807423d13000",
     "url": "/omdbsw/static/js/2.4054e74f.chunk.js"
   },
   {
-    "revision": "23d87408e98d62b92206",
+    "revision": "1308f6f9d6ca869db537",
     "url": "/omdbsw/static/css/main.e2ae8c8b.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/omdbsw/static/css/2.18333ad9.chunk.css"
   },
   {
-    "revision": "6082e18c9a6a7360dfd9658e9aadb159",
+    "revision": "556fa08bb97d403882e11398d3e0f35e",
     "url": "/omdbsw/index.html"
   }
 ];
