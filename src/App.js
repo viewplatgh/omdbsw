@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Header from './components/Header';
 import Search from './containers/Search';
 
 class App extends Component {
@@ -8,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <h1 className="title">OMDB api demo made by Rob Lao</h1>
+          <Header />
           <Search />
         </div>
       </div>
