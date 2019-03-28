@@ -2,8 +2,8 @@ import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { SEARCH_OMDB, UPDATE_SEARCH_RESULT } from '../actions';
 import { updateSearchResult } from '../actions';
 
-export function* fetchOMDB(keyword) {
-  const url = `http://www.omdbapi.com/?apikey=2dd23c8d&s=${keyword}`;
+export function* fetchOMDB(action) {
+  const url = `http://www.omdbapi.com/?apikey=2dd23c8d&s=${action.keyword}`;
   const response = yield call(fetch, url);
   const jsonData = yield response.json();
   yield put(updateSearchResult(jsonData.Search));

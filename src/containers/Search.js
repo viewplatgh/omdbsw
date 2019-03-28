@@ -6,10 +6,11 @@ const chunkLength = 4;
 
 class Search extends Component {
   keywordRef;
+  searchRef;
 
   render() {
     let chunks = [];
-    let i, j;
+    let i;
     for (i = 0; i < this.props.result.length; i += chunkLength) {
       chunks.push(this.props.result.slice(i, i + chunkLength));
     }
@@ -26,11 +27,17 @@ class Search extends Component {
                     placeholder="Type anything to search..."
                     ref={node => (this.keywordRef = node)}
                     size="50"
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') {
+                        this.searchRef.click();
+                      }
+                    }}
                   />
                 </p>
                 <p className="control">
                   <button
                     className="button is-primary"
+                    ref={node => (this.searchRef = node)}
                     onClick={e => {
                       if (!this.keywordRef.value.trim()) {
                         return;
@@ -47,17 +54,22 @@ class Search extends Component {
           </nav>
         </section>
         <section className="section">
-          {chunks.map(tiles => {
+          {chunks.map((tiles, idx0) => {
             return (
-              <div className="tile is-ancestor">
-                {tiles.map(tile => {
+              <div className="tile is-ancestor" key={`anc-${idx0}`}>
+                {tiles.map((tile, idx1) => {
                   return (
-                    <div className={`tile is-parent is-${12 / chunkLength}`}>
-                      <article className="tile is-child notification is-info">
-                        <p className="title">Middle tile</p>
-                        <p className="subtitle">With an image</p>
-                        <figure className="image is-4by3">
-                          <img src="https://bulma.io/images/placeholders/640x480.png" />
+                    <div
+                      className={`tile is-parent is-${12 / chunkLength}`}
+                      key={`par-${idx0}-${idx1}`}
+                    >
+                      <article className="tile is-child notification">
+                        <p className="subtitle is-5">{tile.Title}</p>
+                        <p className="subtitle is-6">
+                          {tile.Type}, {tile.Year}, {tile.imdbID}
+                        </p>
+                        <figure className="image is-3by4">
+                          <img src={tile.Poster} alt={tile.Title} />
                         </figure>
                       </article>
                     </div>
