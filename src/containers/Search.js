@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchOMDB } from '../actions';
+import { searchOMDB, addToWatchlist } from '../actions';
 
 const chunkLength = 4;
 
@@ -74,7 +74,12 @@ class Search extends Component {
                           <img src={tile.Poster} alt={tile.Title} />
                         </figure>
                         <br />
-                        <button className="button is-info">
+                        <button
+                          className="button is-info"
+                          onClick={e => {
+                            this.props.onAddToWatchlist(tile);
+                          }}
+                        >
                           Add to watchlist
                         </button>
                       </article>
@@ -99,7 +104,8 @@ const mapSearchStateToProps = state => {
 
 const mapSearchStateToDispatch = dispatch => {
   return {
-    onDispatchSearch: keyword => dispatch(searchOMDB(keyword))
+    onDispatchSearch: keyword => dispatch(searchOMDB(keyword)),
+    onAddToWatchlist: item => dispatch(addToWatchlist(item))
   };
 };
 

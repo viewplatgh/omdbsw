@@ -1,4 +1,9 @@
-import { SEARCH_OMDB, UPDATE_SEARCH_RESULT } from '../actions';
+import {
+  SEARCH_OMDB,
+  UPDATE_SEARCH_RESULT,
+  ADD_TO_WATCHLIST,
+  REMOVE_FROM_WATCHLIST
+} from '../actions';
 
 const initialState = {
   keyword: '',
@@ -12,6 +17,12 @@ export default function omdbReducer(state = initialState, action) {
       return { ...state, keyword: action.keyword };
     case UPDATE_SEARCH_RESULT:
       return { ...state, result: action.result };
+    case ADD_TO_WATCHLIST:
+      return { ...state, watchlist: [...state.watchlist, action.item] };
+    case REMOVE_FROM_WATCHLIST:
+      let newWatchlist = [...state.watchlist];
+      newWatchlist.splice(action.index, 1);
+      return { ...state, watchlist: newWatchlist };
     default:
       return state;
   }
