@@ -47,5 +47,6 @@
   },
   "prettier": {
     "singleQuote": true
-  }
+  },
+  "homepage": "https://viewplatgh.github.io/omdbsw"
 }
