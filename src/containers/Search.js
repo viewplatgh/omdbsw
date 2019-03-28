@@ -63,14 +63,20 @@ class Search extends Component {
                       className={`tile is-parent is-${12 / chunkLength}`}
                       key={`par-${idx0}-${idx1}`}
                     >
-                      <article className="tile is-child notification">
-                        <p className="subtitle is-5">{tile.Title}</p>
+                      <article className="tile is-child box">
+                        <p className="subtitle is-5">
+                          <b>{tile.Title}</b>
+                        </p>
                         <p className="subtitle is-6">
                           {tile.Type}, {tile.Year}, {tile.imdbID}
                         </p>
                         <figure className="image is-3by4">
                           <img src={tile.Poster} alt={tile.Title} />
                         </figure>
+                        <br />
+                        <button className="button is-info">
+                          Add to watchlist
+                        </button>
                       </article>
                     </div>
                   );
