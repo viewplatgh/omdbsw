@@ -3,15 +3,12 @@ import { connect } from 'react-redux';
 import { removeFromWatchlist } from '../actions';
 
 class Watchlist extends Component {
-  keywordRef;
-  searchRef;
-
   render() {
     return (
       <>
         <section className="section">
           <table
-            class="table"
+            className="table"
             style={{ marginLeft: 'auto', marginRight: 'auto' }}
           >
             <thead>

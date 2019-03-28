@@ -2,7 +2,6 @@ export const SEARCH_OMDB = 'SEARCH_OMDB';
 export const UPDATE_SEARCH_RESULT = 'UPDATE_SEARCH_RESULT';
 export const ADD_TO_WATCHLIST = 'ADD_TO_WATCHLIST';
 export const REMOVE_FROM_WATCHLIST = 'REMOVE_FROM_WATCHLIST';
-export const SAVE_WATCHLIST = 'SAVE_WATCHLIST';
 export const LOAD_WATCHLIST = 'LOAD_WATCHLIST';
 
 export function searchOMDB(keyword) {
@@ -30,12 +29,6 @@ export function removeFromWatchlist(index) {
   return {
     type: REMOVE_FROM_WATCHLIST,
     index
-  };
-}
-
-export function saveWatchlist() {
-  return {
-    type: SAVE_WATCHLIST
   };
 }
 

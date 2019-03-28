@@ -1,5 +1,9 @@
-import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { SEARCH_OMDB, UPDATE_SEARCH_RESULT } from '../actions';
+import { all, call, put, select, takeEvery } from 'redux-saga/effects';
+import {
+  SEARCH_OMDB,
+  ADD_TO_WATCHLIST,
+  REMOVE_FROM_WATCHLIST
+} from '../actions';
 import { updateSearchResult } from '../actions';
 
 export function* fetchOMDB(action) {
@@ -9,10 +13,15 @@ export function* fetchOMDB(action) {
   yield put(updateSearchResult(jsonData.Search));
 }
 
-export function* handleSearchOMDB() {
-  yield takeEvery(SEARCH_OMDB, fetchOMDB);
+export function* saveWatchlist() {
+  const watchlist = yield select(state => state.watchlist);
+  localStorage.setItem('omdbsw', JSON.stringify(watchlist));
 }
 
 export default function* rootSaga() {
-  yield all([handleSearchOMDB()]);
+  yield all([
+    takeEvery(SEARCH_OMDB, fetchOMDB),
+    takeEvery(ADD_TO_WATCHLIST, saveWatchlist),
+    takeEvery(REMOVE_FROM_WATCHLIST, saveWatchlist)
+  ]);
 }

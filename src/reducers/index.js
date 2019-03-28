@@ -2,7 +2,8 @@ import {
   SEARCH_OMDB,
   UPDATE_SEARCH_RESULT,
   ADD_TO_WATCHLIST,
-  REMOVE_FROM_WATCHLIST
+  REMOVE_FROM_WATCHLIST,
+  LOAD_WATCHLIST
 } from '../actions';
 
 const initialState = {
@@ -22,6 +23,16 @@ export default function omdbReducer(state = initialState, action) {
     case REMOVE_FROM_WATCHLIST:
       let newWatchlist = [...state.watchlist];
       newWatchlist.splice(action.index, 1);
+      return { ...state, watchlist: newWatchlist };
+    case LOAD_WATCHLIST:
+      try {
+        newWatchlist = JSON.parse(localStorage.getItem('omdbsw'));
+        if (!newWatchlist) {
+          return state;
+        }
+      } catch (e) {
+        return state;
+      }
       return { ...state, watchlist: newWatchlist };
     default:
       return state;
